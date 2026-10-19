@@ -1,0 +1,14 @@
+<%- include('partials/header') %>
+<main class="page">
+  <h1 class="yellow-text">ТРЕНЕРЫ</h1>
+  <div class="cards">
+    <% trainers.forEach(t => { %>
+      <div class="card">
+        <h3><%= t.name %></h3>
+        <p><%= t.specialty %> · опыт <%= t.experience_years %> лет</p>
+      </div>
+    <% }) %>
+  </div>
+  <button class="btn-primary open-start">ЗАПИСАТЬСЯ К ТРЕНЕРУ</button>
+</main>
+<%- include('partials/footer') %>

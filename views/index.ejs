@@ -1,0 +1,95 @@
+<%- include('partials/head') %>
+
+<div class="container">
+  <div class="left-side">
+    <a href="/" class="logo">KIRILLS<span>POWER HOUSE</span></a>
+    <div class="hero-content">
+      <span class="subtitle">СИЛА • ХАРАКТЕР • РЕЗУЛЬТАТ</span>
+      <h1>ТВОЯ СИЛА<br>НАЧИНАЕТСЯ<br><span class="yellow-text">ЗДЕСЬ</span></h1>
+      <p class="description">
+        Тренируйся умнее. Становись сильнее.<br>
+        Премиальное пространство для тех, кто не ищет оправданий.
+      </p>
+      <button class="btn-primary open-start">НАЧАТЬ СЕЙЧАС</button>
+    </div>
+    <div></div>
+  </div>
+
+  <div class="right-side">
+    <div class="nav-overlay">
+      <ul class="nav-menu">
+        <li><a href="/trainings">Тренировки</a></li>
+        <li><a href="/trainers">Тренеры</a></li>
+        <li><a href="/club">Клуб</a></li>
+        <li><a href="/contacts">Контакты</a></li>
+      </ul>
+      <button class="btn-header open-trial">ПРОБНАЯ ТРЕНИРОВКА</button>
+    </div>
+    <div class="info-bar">
+      <div class="info-item">24/7 ДОСТУП <span class="dot"></span></div>
+      <div class="info-item">1 800 М² <span class="dot"></span></div>
+      <div class="info-item">МОСКВА</div>
+    </div>
+  </div>
+</div>
+
+<!-- НАПРАВЛЕНИЯ -->
+<section class="section section-light">
+  <span class="eyebrow">НАПРАВЛЕНИЯ</span>
+  <div class="section-head">
+    <h2>ВСЁ, ЧТО НУЖНО<br>ДЛЯ ТВОЕГО ПРОГРЕССА</h2>
+    <span class="counter">01—0<%= trainings.length %></span>
+  </div>
+  <div class="dir-grid">
+    <% trainings.forEach(t => { %>
+      <a href="/trainings" class="dir-card"
+         <% if (t.image) { %>style="background-image:url('<%= t.image %>')"<% } %>>
+        <span class="dir-arrow">↗</span>
+        <h3><%= t.title %></h3>
+        <p><%= t.description %></p>
+      </a>
+    <% }) %>
+  </div>
+</section>
+
+<!-- КЛУБ -->
+<section class="section section-dark club-block">
+  <div class="club-photo"><div class="rating"><b>4.9</b><small>РЕЙТИНГ КЛУБА</small></div></div>
+  <div class="club-text">
+    <span class="eyebrow">НЕ ПРОСТО ЗАЛ</span>
+    <h2>МЕСТО, ГДЕ<br>СТАНОВЯТСЯ<br><span class="yellow-text">СИЛЬНЕЕ</span></h2>
+    <p>Без очередей к тренажёрам. Без случайных программ. Только продуманная среда, сильное комьюнити и тренеры, которые отвечают за результат.</p>
+    <div class="stats">
+      <div><b>50+</b><small>ТРЕНАЖЁРОВ</small></div>
+      <div><b>18</b><small>ТРЕНЕРОВ</small></div>
+      <div><b>7</b><small>ЗОН ТРЕНИНГА</small></div>
+    </div>
+    <a href="/club" class="btn-primary">СМОТРЕТЬ КЛУБ</a>
+  </div>
+</section>
+
+<!-- АБОНЕМЕНТЫ -->
+<section class="section section-white">
+  <span class="eyebrow">АБОНЕМЕНТЫ</span>
+  <div class="section-head">
+    <h2>ВЫБЕРИ СВОЙ РЕЖИМ</h2>
+    <p class="note">Никаких скрытых платежей. Заморозка и гостевой визит включены.</p>
+  </div>
+  <div class="plans-grid">
+    <% plans.forEach(p => { %>
+      <div class="plan <%= p.is_popular ? 'plan-popular' : '' %>">
+        <div class="plan-top">
+          <small><%= p.title.toUpperCase() %></small>
+          <% if (p.is_popular) { %><span class="badge">ПОПУЛЯРНЫЙ</span><% } %>
+        </div>
+        <div class="price"><%= p.price.toLocaleString('ru-RU') %> ₽ <small>/ мес</small></div>
+        <ul>
+          <% (p.features || []).forEach(f => { %><li><%= f %></li><% }) %>
+        </ul>
+        <button class="<%= p.is_popular ? 'btn-primary' : 'btn-dark' %> open-start">ВЫБРАТЬ</button>
+      </div>
+    <% }) %>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

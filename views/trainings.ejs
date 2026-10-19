@@ -1,0 +1,14 @@
+<%- include('partials/header') %>
+<main class="page">
+  <h1 class="yellow-text">ТРЕНИРОВКИ</h1>
+  <div class="cards">
+    <% trainings.forEach(t => { %>
+      <div class="card">
+        <h3><%= t.title %></h3>
+        <p><%= t.description %></p>
+      </div>
+    <% }) %>
+  </div>
+  <button class="btn-primary open-trial">ПРОБНАЯ ТРЕНИРОВКА</button>
+</main>
+<%- include('partials/footer') %>
